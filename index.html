@@ -1,157 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Prathithi Korwar — Software Engineer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Prathithi Korwar's portfolio covering application troubleshooting, data analytics, dashboard reporting, and software development.">
+<title>Prathithi Korwar | Software and Data Portfolio</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',sans-serif;background:#0a0a0f;color:#e2e8f0;line-height:1.6}
-a{color:#7c9dff;text-decoration:none}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",Arial,sans-serif;background:#0a0a0f;color:#e2e8f0;line-height:1.65}
+a{color:#8aa7ff;text-decoration:none}
 a:hover{text-decoration:underline}
-nav{position:sticky;top:0;background:rgba(10,10,15,0.92);backdrop-filter:blur(10px);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e2a4a;z-index:100}
-.nav-name{font-weight:700;font-size:1.1rem;color:#fff}
-.nav-links{display:flex;gap:1.5rem;font-size:0.9rem;color:#94a3b8}
+nav{position:sticky;top:0;background:rgba(10,10,15,.94);backdrop-filter:blur(10px);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e2a4a;z-index:100}
+.nav-name{font-weight:700;font-size:1.05rem;color:#fff}
+.nav-links{display:flex;gap:1.4rem;font-size:.88rem}
 .nav-links a{color:#94a3b8}
-.nav-links a:hover{color:#7c9dff}
-.hero{padding:5rem 2rem 3rem;max-width:860px;margin:0 auto}
-.hero-tag{font-size:0.85rem;color:#7c9dff;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem}
-.hero h1{font-size:3rem;font-weight:800;color:#fff;line-height:1.15;margin-bottom:1rem}
-.hero h1 span{color:#7c9dff}
-.hero p{font-size:1.05rem;color:#94a3b8;max-width:600px;margin-bottom:2rem}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-primary{background:#7c9dff;color:#0a0a0f;padding:0.65rem 1.4rem;border-radius:8px;font-weight:700;font-size:0.9rem}
-.btn-primary:hover{background:#9db4ff;text-decoration:none}
-.btn-secondary{border:1px solid #1e2a4a;color:#94a3b8;padding:0.65rem 1.4rem;border-radius:8px;font-weight:600;font-size:0.9rem}
-.btn-secondary:hover{border-color:#7c9dff;color:#7c9dff;text-decoration:none}
-section{max-width:860px;margin:0 auto;padding:3rem 2rem}
-.section-label{font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#7c9dff;margin-bottom:0.5rem}
-h2{font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:1.5rem}
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
-.skill-card{background:#111827;border:1px solid #1e2a4a;border-radius:10px;padding:1rem 1.2rem}
-.skill-card h4{font-size:0.8rem;font-weight:700;color:#7c9dff;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem}
-.skill-card p{font-size:0.88rem;color:#94a3b8;line-height:1.5}
+.nav-links a:hover{color:#8aa7ff;text-decoration:none}
+.hero{padding:5.5rem 2rem 4rem;max-width:920px;margin:0 auto}
+.hero-tag,.section-label{font-size:.78rem;color:#8aa7ff;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.hero-tag{margin-bottom:1rem}
+.hero h1{font-size:clamp(2.35rem,6vw,4rem);font-weight:800;color:#fff;line-height:1.08;max-width:800px;margin-bottom:1.25rem}
+.hero h1 span{color:#8aa7ff}
+.hero p{font-size:1.05rem;color:#a8b3c7;max-width:720px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-primary,.btn-secondary{padding:.67rem 1.3rem;border-radius:8px;font-weight:700;font-size:.9rem}
+.btn-primary{background:#8aa7ff;color:#0a0a0f}
+.btn-primary:hover{background:#a8bcff;text-decoration:none}
+.btn-secondary{border:1px solid #2a385b;color:#b8c2d5}
+.btn-secondary:hover{border-color:#8aa7ff;color:#8aa7ff;text-decoration:none}
+section{max-width:920px;margin:0 auto;padding:3.3rem 2rem}
+.section-label{margin-bottom:.45rem}
+h2{font-size:1.7rem;font-weight:750;color:#fff;margin-bottom:1.5rem}
+.about-copy{max-width:760px;color:#a8b3c7;font-size:1rem}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.skill-card,.project-card,.education-card,.contact-box{background:#111827;border:1px solid #1e2a4a;border-radius:12px}
+.skill-card{padding:1.15rem 1.25rem}
+.skill-card h3{font-size:.8rem;font-weight:700;color:#8aa7ff;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem}
+.skill-card p{font-size:.9rem;color:#a8b3c7}
 .projects-grid{display:grid;gap:1.2rem}
-.project-card{background:#111827;border:1px solid #1e2a4a;border-radius:12px;padding:1.4rem 1.6rem;transition:border-color 0.2s}
-.project-card:hover{border-color:#7c9dff}
-.project-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.5rem}
-.project-top h3{font-size:1.05rem;font-weight:700;color:#fff}
-.project-link{font-size:0.8rem;color:#7c9dff;border:1px solid #1e2a4a;padding:0.25rem 0.7rem;border-radius:6px}
-.project-link:hover{border-color:#7c9dff;text-decoration:none}
-.project-card p{font-size:0.9rem;color:#94a3b8;margin-bottom:0.8rem}
-.tags{display:flex;flex-wrap:wrap;gap:0.4rem}
-.tag{font-size:0.75rem;background:#1e2a4a;color:#7c9dff;padding:0.2rem 0.6rem;border-radius:5px}
-.exp-card{border-left:2px solid #1e2a4a;padding-left:1.2rem;margin-bottom:1.8rem}
-.exp-card:hover{border-left-color:#7c9dff}
-.exp-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.3rem}
-.exp-title{font-weight:700;color:#fff;font-size:0.95rem}
-.exp-date{font-size:0.8rem;color:#94a3b8}
-.exp-company{font-size:0.85rem;color:#7c9dff;margin-bottom:0.5rem}
-.exp-card ul{padding-left:1rem}
-.exp-card li{font-size:0.88rem;color:#94a3b8;margin-bottom:0.3rem}
-.contact-box{background:#111827;border:1px solid #1e2a4a;border-radius:12px;padding:2rem;text-align:center}
-.contact-box p{color:#94a3b8;margin-bottom:1.2rem}
-.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
-.contact-link{border:1px solid #1e2a4a;color:#94a3b8;padding:0.5rem 1.2rem;border-radius:8px;font-size:0.9rem}
-.contact-link:hover{border-color:#7c9dff;color:#7c9dff;text-decoration:none}
-footer{text-align:center;padding:2rem;font-size:0.8rem;color:#4a5568;border-top:1px solid #1e2a4a}
+.project-card{padding:1.45rem 1.55rem;transition:border-color .2s}
+.project-card:hover{border-color:#5675d6}
+.project-top{display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;flex-wrap:wrap;margin-bottom:.65rem}
+.project-top h3{font-size:1.05rem;color:#fff}
+.project-links{display:flex;gap:.45rem}
+.project-link{font-size:.78rem;color:#8aa7ff;border:1px solid #2a385b;padding:.25rem .65rem;border-radius:6px}
+.project-link:hover{border-color:#8aa7ff;text-decoration:none}
+.project-card p{font-size:.91rem;color:#a8b3c7;margin-bottom:.85rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{font-size:.74rem;background:#1e2a4a;color:#a9bbff;padding:.2rem .6rem;border-radius:5px}
+.experience-list{display:grid;gap:1.8rem}
+.exp-card{border-left:2px solid #2a385b;padding-left:1.2rem}
+.exp-top{display:flex;justify-content:space-between;gap:.4rem;flex-wrap:wrap;margin-bottom:.25rem}
+.exp-title{font-weight:700;color:#fff}
+.exp-date{font-size:.82rem;color:#94a3b8}
+.exp-company{font-size:.88rem;color:#8aa7ff;margin-bottom:.55rem}
+.exp-card ul{padding-left:1.05rem}
+.exp-card li{font-size:.9rem;color:#a8b3c7;margin-bottom:.35rem}
+.education-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}
+.education-card{padding:1.25rem 1.35rem}
+.education-card h3{font-size:1rem;color:#fff;margin-bottom:.3rem}
+.education-card p{font-size:.88rem;color:#a8b3c7}
+.education-meta{color:#8aa7ff!important;margin-top:.35rem}
+.credentials{display:grid;gap:.7rem}
+.credential-row{padding:.95rem 1.1rem;border-left:2px solid #2a385b;color:#a8b3c7}
+.credential-row strong{color:#fff}
+.contact-box{padding:2rem;text-align:center}
+.contact-box p{color:#a8b3c7;max-width:600px;margin:0 auto 1.25rem}
+.contact-links{display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap}
+.contact-link{border:1px solid #2a385b;color:#b8c2d5;padding:.5rem 1rem;border-radius:8px;font-size:.88rem}
+.contact-link:hover{border-color:#8aa7ff;color:#8aa7ff;text-decoration:none}
+footer{text-align:center;padding:2rem;font-size:.8rem;color:#667085;border-top:1px solid #1e2a4a}
+@media(max-width:680px){
+  nav{padding:1rem 1.25rem}
+  .nav-links{gap:.8rem}
+  .nav-links a:nth-child(2),.nav-links a:nth-child(4){display:none}
+  .hero{padding:4rem 1.25rem 2.5rem}
+  section{padding:2.7rem 1.25rem}
+  .education-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 <nav>
   <span class="nav-name">Prathithi Korwar</span>
   <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
-<div class="hero">
-  <div class="hero-tag">Available for full-time roles</div>
-  <h1>Software Engineer<br/><span>Full-Stack &middot; Cloud &middot; AI</span></h1>
-  <p>M.Eng. Computer Science, University of Cincinnati (GPA 3.97). I build scalable APIs, real-time systems, and ML-powered applications. Authorized to work in the United States.</p>
-  <div class="hero-btns">
-    <a class="btn-primary" href="https://www.linkedin.com/in/prathithikorwar/" target="_blank">LinkedIn</a>
-    <a class="btn-secondary" href="https://github.com/pDawg-1" target="_blank">GitHub</a>
-    <a class="btn-secondary" href="mailto:korwarpi@mail.uc.edu">Email Me</a>
-  </div>
-</div>
-<section id="skills">
-  <div class="section-label">What I work with</div>
-  <h2>Technical Skills</h2>
-  <div class="skills-grid">
-    <div class="skill-card"><h4>Languages</h4><p>Python, JavaScript, TypeScript, Java, C++, SQL</p></div>
-    <div class="skill-card"><h4>Frameworks</h4><p>React.js, Flask, Node.js, REST APIs, GraphQL, WebSockets</p></div>
-    <div class="skill-card"><h4>Databases</h4><p>PostgreSQL, MySQL, MongoDB, Redis</p></div>
-    <div class="skill-card"><h4>DevOps & Cloud</h4><p>Docker, AWS, GitHub Actions, CI/CD, Linux</p></div>
-    <div class="skill-card"><h4>Testing</h4><p>pytest, Jest, unit & integration testing, Postman</p></div>
-    <div class="skill-card"><h4>Concepts</h4><p>System Design, Microservices, RBAC, JWT Auth, Agile/Scrum</p></div>
-  </div>
-</section>
-<section id="projects">
-  <div class="section-label">Things I've built</div>
-  <h2>Projects</h2>
-  <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-top">
-        <h3>Team Pulse — Collaborative Task Management</h3>
-        <a class="project-link" href="https://team-pulse-git-main-pdawg-1s-projects.vercel.app" target="_blank">Live Demo</a>
+
+<main>
+  <header class="hero">
+    <div class="hero-tag">Software and data portfolio</div>
+    <h1>I troubleshoot applications, validate data, and <span>build useful reporting tools.</span></h1>
+    <p>M.Eng. Computer Science student at the University of Cincinnati with hands-on experience in application support, data analysis, dashboard reporting, and software development.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#projects">View Projects</a>
+      <a class="btn-secondary" href="https://www.linkedin.com/in/prathithikorwar/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn-secondary" href="https://github.com/pDawg-1" target="_blank" rel="noreferrer">GitHub</a>
+      <a class="btn-secondary" href="mailto:prathithikorwar@gmail.com">Email</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="section-label">About</div>
+    <h2>A practical approach to software and data</h2>
+    <p class="about-copy">My work sits at the intersection of application troubleshooting, data analysis, and development. I use SQL, APIs, logs, and reporting tools to trace issues, check data flow, and explain findings clearly. My projects include pharmacy analytics, system monitoring, and collaborative task management.</p>
+  </section>
+
+  <section id="skills">
+    <div class="section-label">Skills</div>
+    <h2>Tools I use</h2>
+    <div class="skills-grid">
+      <article class="skill-card">
+        <h3>Data analysis and reporting</h3>
+        <p>Python, SQL, Power BI, Tableau, DAX, Power Query, Pandas, NumPy, Excel</p>
+      </article>
+      <article class="skill-card">
+        <h3>Databases and platforms</h3>
+        <p>Snowflake, MySQL, PostgreSQL, SQLite</p>
+      </article>
+      <article class="skill-card">
+        <h3>Development and integration</h3>
+        <p>JavaScript, HTML, CSS, Flask, FastAPI, REST APIs, JWT, Postman, Git, GitHub</p>
+      </article>
+      <article class="skill-card">
+        <h3>Cloud and data workflows</h3>
+        <p>AWS S3, AWS EC2, ETL, data modeling, API integration</p>
+      </article>
+      <article class="skill-card">
+        <h3>Analysis and delivery</h3>
+        <p>Requirements gathering, workflow analysis, process improvement, root cause analysis</p>
+      </article>
+      <article class="skill-card">
+        <h3>Support and collaboration</h3>
+        <p>Application troubleshooting, technical documentation, database design, Agile development</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-label">Projects</div>
+    <h2>Selected work</h2>
+    <div class="projects-grid">
+      <article class="project-card">
+        <div class="project-top">
+          <h3>MedScope - Prescription Cost &amp; Pharmacy Analytics</h3>
+          <div class="project-links">
+            <a class="project-link" href="https://medscope-pharmacy-analytics.vercel.app" target="_blank" rel="noreferrer">Live Demo</a>
+            <a class="project-link" href="https://github.com/pDawg-1/medscope-pharmacy-analytics" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+        <p>Turned pharmacy reporting needs into requirements, user stories, process flows, a traceability matrix, and a UAT plan. Built raw, clean, and reporting layers in Snowflake, added SQL and Python data checks, and created Power BI dashboards for cost, coverage, provider, and prescription analysis.</p>
+        <div class="tags"><span class="tag">Snowflake</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Pandas</span><span class="tag">Flask</span></div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
+          <h3>WatchOver - Real-Time System Monitoring</h3>
+          <div class="project-links">
+            <a class="project-link" href="https://watchover-monitoring-dashboard.vercel.app" target="_blank" rel="noreferrer">Live Demo</a>
+            <a class="project-link" href="https://github.com/pDawg-1/watchover-monitoring-dashboard" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+        <p>Built a dashboard for CPU, memory, disk, network, and uptime monitoring. Flask REST APIs collect live system metrics, while reusable React components display frequent updates and handle backend-to-frontend data flow.</p>
+        <div class="tags"><span class="tag">React</span><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">REST APIs</span></div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
+          <h3>TeamPulse - Collaborative Task Management</h3>
+          <div class="project-links">
+            <a class="project-link" href="https://team-pulse-gold-eight.vercel.app" target="_blank" rel="noreferrer">Live Demo</a>
+            <a class="project-link" href="https://github.com/pDawg-1/TeamPulse" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+        <p>Developed a full-stack task management platform with authentication, task assignments, due dates, project status, and collaborative workflows. Designed the relational data model and implemented REST APIs for authentication and task management.</p>
+        <div class="tags"><span class="tag">React</span><span class="tag">Flask</span><span class="tag">REST APIs</span><span class="tag">SQLite</span><span class="tag">SQLAlchemy</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-label">Experience</div>
+    <h2>Professional experience</h2>
+    <div class="experience-list">
+      <article class="exp-card">
+        <div class="exp-top">
+          <span class="exp-title">Software Engineer Intern</span>
+          <span class="exp-date">Jun 2023 - Oct 2023</span>
+        </div>
+        <div class="exp-company">Opus Infiniti Services Pvt. Ltd.</div>
+        <ul>
+          <li>Investigated application issues using SQL results, backend logs, REST API responses, and expected system behavior.</li>
+          <li>Traced data across database records, API responses, and application screens to find where issues occurred.</li>
+          <li>Wrote SQL queries to verify records, compare filtered results, and isolate data inconsistencies.</li>
+          <li>Shared reproduction steps and supporting evidence with senior developers and documented recurring troubleshooting patterns.</li>
+        </ul>
+      </article>
+
+      <article class="exp-card">
+        <div class="exp-top">
+          <span class="exp-title">Software Engineer Intern - Open Source Initiative</span>
+          <span class="exp-date">Jan 2024 - Apr 2024</span>
+        </div>
+        <div class="exp-company">Keshav Memorial Institute of Technology</div>
+        <ul>
+          <li>Contributed frontend improvements to the KMEC institutional website using HTML, CSS, and JavaScript.</li>
+          <li>Improved page layout, navigation flow, and content clarity for students, parents, and visitors.</li>
+          <li>Tested key pages across desktop, tablet, and mobile views for spacing, alignment, link behavior, and responsiveness.</li>
+          <li>Reviewed changes with a student team, incorporated feedback, and maintained a consistent website experience.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-label">Education</div>
+    <h2>Academic background</h2>
+    <div class="education-grid">
+      <article class="education-card">
+        <h3>M.Eng. in Computer Science</h3>
+        <p>University of Cincinnati, Cincinnati, Ohio</p>
+        <p class="education-meta">May 2026 | GPA: 3.97/4.00</p>
+      </article>
+      <article class="education-card">
+        <h3>B.Tech. in Computer Science &amp; Engineering</h3>
+        <p>Keshav Memorial Institute of Technology, India</p>
+        <p class="education-meta">May 2024 | GPA: 8.26/10.00</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <div class="section-label">Credentials</div>
+    <h2>Certifications and activities</h2>
+    <div class="credentials">
+      <div class="credential-row"><strong>Certifications:</strong> AWS Academy Cloud Foundations, Salesforce J2EE Program, Deep Learning with TensorFlow by Google</div>
+      <div class="credential-row"><strong>Hackathons, 2022-2024:</strong> Built data-focused applications, dashboards, and backend APIs with cross-functional teams during 24-hour events.</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-label">Contact</div>
+    <h2>Get in touch</h2>
+    <div class="contact-box">
+      <p>I am based in Cincinnati, Ohio. Reach out to discuss software, application support, or data-focused opportunities.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:prathithikorwar@gmail.com">prathithikorwar@gmail.com</a>
+        <a class="contact-link" href="https://www.linkedin.com/in/prathithikorwar/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="contact-link" href="https://github.com/pDawg-1" target="_blank" rel="noreferrer">GitHub</a>
       </div>
-      <p>Full-stack SaaS platform supporting 500+ concurrent sessions with JWT-authenticated REST APIs, RBAC, and normalized PostgreSQL schema. CI/CD pipeline via GitHub Actions with 85% test coverage.</p>
-      <div class="tags"><span class="tag">React</span><span class="tag">Flask</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span></div>
     </div>
-    <div class="project-card">
-      <div class="project-top">
-        <h3>WatchOver — Real-Time System Monitoring</h3>
-        <a class="project-link" href="https://watchover-monitoring-dashboard.vercel.app" target="_blank">Live Demo</a>
-      </div>
-      <p>WebSocket-powered ops dashboard monitoring 15+ system metrics in real time with Redis-cached historical data. Load-tested at 50,000 events/minute with 99.9% uptime and under 100ms UI latency.</p>
-      <div class="tags"><span class="tag">React</span><span class="tag">Python</span><span class="tag">WebSockets</span><span class="tag">REST APIs</span><span class="tag">Redis</span></div>
-    </div>
-    <div class="project-card">
-      <div class="project-top">
-        <h3>Sign Language Translator</h3>
-        <a class="project-link" href="https://github.com/pDawg-1" target="_blank">GitHub</a>
-      </div>
-      <p>End-to-end real-time ASL gesture recognition — CNN+RNN pipeline trained on 87,000+ labeled images across 26 classes achieving 85%+ accuracy. Flask REST API with live OpenCV inference at 15 fps and under 200ms latency on CPU-only hardware.</p>
-      <div class="tags"><span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">CNN+RNN</span><span class="tag">OpenCV</span><span class="tag">Flask</span></div>
-    </div>
-  </div>
-</section>
-<section id="experience">
-  <div class="section-label">Where I've worked</div>
-  <h2>Experience</h2>
-  <div class="exp-card">
-    <div class="exp-top"><span class="exp-title">Backend Software Engineer Intern</span><span class="exp-date">Jun – Oct 2023</span></div>
-    <div class="exp-company">Opus Infiniti Services Pvt. Ltd.</div>
-    <ul>
-      <li>Reduced API response latency by ~20% via Redis caching and query optimization across 10,000+ daily requests</li>
-      <li>Grew test coverage from 45% to 78% using pytest; zero production rollbacks across 4 sprint cycles</li>
-      <li>Standardized REST API contracts across 3 internal teams, cutting integration rework by ~40%</li>
-    </ul>
-  </div>
-  <div class="exp-card">
-    <div class="exp-top"><span class="exp-title">Software Engineer Intern, Open Source</span><span class="exp-date">Jan – Apr 2024</span></div>
-    <div class="exp-company">Keshav Memorial Institute of Technology</div>
-    <ul>
-      <li>Built real-time monitoring dashboard adopted by 20+ developers for daily performance validation</li>
-      <li>Shipped 12+ PRs with 90%+ test coverage; cut bug recurrence by 35% in 8 weeks</li>
-      <li>Authored onboarding documentation that tripled monthly active contributors in 60 days</li>
-    </ul>
-  </div>
-</section>
-<section id="contact">
-  <div class="section-label">Get in touch</div>
-  <h2>Contact</h2>
-  <div class="contact-box">
-    <p>Open to full-time Software Engineer and Full-Stack Engineer roles. Authorized to work in the United States.</p>
-    <div class="contact-links">
-      <a class="contact-link" href="mailto:korwarpi@mail.uc.edu">korwarpi@mail.uc.edu</a>
-      <a class="contact-link" href="https://www.linkedin.com/in/prathithikorwar/" target="_blank">LinkedIn</a>
-      <a class="contact-link" href="https://github.com/pDawg-1" target="_blank">GitHub</a>
-    </div>
-  </div>
-</section>
-<footer>Built by Prathithi Korwar &nbsp;·&nbsp; pdawg-1.github.io</footer>
+  </section>
+</main>
+
+<footer>Prathithi Korwar | Cincinnati, Ohio</footer>
 </body>
 </html>
