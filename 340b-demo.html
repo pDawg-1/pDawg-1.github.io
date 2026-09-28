@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>340B Eligibility Assistant Demo</title>
+<style>
+:root{--bg:#0b1020;--card:#131a2f;--muted:#9fb0cc;--text:#eef3ff;--accent:#7aa2ff;--ok:#3ddc97;--warn:#ffca62;--bad:#ff6b7a}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#080d19,#111a32);color:var(--text);line-height:1.5}
+main{max-width:980px;margin:auto;padding:36px 20px 54px}.eyebrow{color:var(--accent);text-transform:uppercase;font-size:.76rem;letter-spacing:.13em;font-weight:700}
+h1{font-size:clamp(2rem,5vw,3.25rem);margin:.35rem 0 .7rem}p{color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.card{background:rgba(19,26,47,.92);border:1px solid #273657;border-radius:14px;padding:18px;box-shadow:0 12px 30px rgba(0,0,0,.22)}
+label{display:block;font-weight:700;margin:.55rem 0 .3rem}select,input{width:100%;background:#0d1427;color:var(--text);border:1px solid #33466f;border-radius:8px;padding:10px}
+button{background:var(--accent);color:#08101e;border:0;border-radius:9px;padding:11px 16px;font-weight:800;cursor:pointer;margin-top:13px}
+button.secondary{background:#202c49;color:var(--text);margin-left:8px}.status{font-size:1.35rem;font-weight:800;margin:.4rem 0}.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+.check{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #263655;padding:9px 0}.check:first-child{border-top:0}.small{font-size:.86rem;color:var(--muted)}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:13px}.metric{background:#0d1427;border:1px solid #263655;border-radius:10px;padding:12px}.metric strong{display:block;font-size:1.25rem}
+.note{margin-top:22px;font-size:.82rem;color:#8191ad}@media(max-width:760px){.grid{grid-template-columns:1fr}.metrics{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">Interactive software engineering demo</div>
+<h1>340B Eligibility Assistant</h1>
+<p>A synthetic decision-support prototype that evaluates six deterministic eligibility checks, explains every outcome, summarizes cohort impact, and exports an auditable screening record. No real patient data is used.</p>
+<div class="grid">
+<section class="card">
+<h2>Encounter</h2>
+<label for="sample">Sample scenario</label>
+<select id="sample">
+<option value="eligible">Eligible outpatient encounter</option>
+<option value="inpatient">Inpatient encounter</option>
+<option value="provider">Provider not covered</option>
+<option value="payer">Excluded payer</option>
+</select>
+<label for="cost">Estimated medication cost ($)</label>
+<input id="cost" type="number" value="420" min="0">
+<button onclick="evaluateCase()">Run 6 checks</button><button class="secondary" onclick="exportRecord()">Export JSON</button>
+</section>
+<section class="card">
+<h2>Decision</h2>
+<div id="status" class="status">Ready for evaluation</div>
+<div id="reason" class="small">Select a synthetic encounter and run the rules.</div>
+<div class="metrics">
+<div class="metric"><span class="small">Checks passed</span><strong id="passed">-</strong></div>
+<div class="metric"><span class="small">Traceability</span><strong id="trace">100%</strong></div>
+<div class="metric"><span class="small">Modeled impact</span><strong id="impact">$0</strong></div>
+</div>
+</section>
+</div>
+<section class="card" style="margin-top:16px">
+<h2>Rule-level explanation</h2>
+<div id="checks"></div>
+</section>
+<p class="note">Educational prototype only. The rules and synthetic examples are designed to demonstrate explainable software decision logic, not to determine real-world 340B eligibility or provide legal/compliance guidance.</p>
+</main>
+<script>
+const scenarios={
+eligible:{outpatient:true,coveredEntity:true,coveredProvider:true,eligibleLocation:true,eligiblePayer:true,validDiagnosis:true},
+inpatient:{outpatient:false,coveredEntity:true,coveredProvider:true,eligibleLocation:true,eligiblePayer:true,validDiagnosis:true},
+provider:{outpatient:true,coveredEntity:true,coveredProvider:false,eligibleLocation:true,eligiblePayer:true,validDiagnosis:true},
+payer:{outpatient:true,coveredEntity:true,coveredProvider:true,eligibleLocation:true,eligiblePayer:false,validDiagnosis:true}
+};
+const labels=[
+["outpatient","Outpatient encounter"],
+["coveredEntity","Covered entity relationship"],
+["coveredProvider","Covered provider"],
+["eligibleLocation","Eligible service location"],
+["eligiblePayer","Eligible payer type"],
+["validDiagnosis","Supported diagnosis / encounter context"]
+];
+let lastRecord=null;
+function evaluateCase(){
+ const key=document.getElementById("sample").value;
+ const data=scenarios[key], cost=Math.max(0,Number(document.getElementById("cost").value||0));
+ const results=labels.map(([k,label])=>({rule:k,label,passed:!!data[k]}));
+ const passed=results.filter(r=>r.passed).length, eligible=passed===6;
+ const modeled=eligible?Math.round(cost*0.22):0;
+ document.getElementById("status").textContent=eligible?"Eligible in demo rules":"Requires review / not eligible";
+ document.getElementById("status").className="status "+(eligible?"ok":"warn");
+ document.getElementById("reason").textContent=eligible?"All six deterministic checks passed.":"One or more deterministic checks failed; review the rule-level explanation below.";
+ document.getElementById("passed").textContent=passed+"/6";
+ document.getElementById("impact").textContent="$"+modeled.toLocaleString();
+ document.getElementById("checks").innerHTML=results.map(r=>`<div class="check"><span>${r.label}</span><strong class="${r.passed?'ok':'bad'}">${r.passed?'PASS':'FAIL'}</strong></div>`).join("");
+ lastRecord={scenario:key,checks:results,eligible,estimatedMedicationCost:cost,modeledImpact:modeled,traceability:"6/6 rules explained"};
+}
+function exportRecord(){
+ if(!lastRecord)evaluateCase();
+ const blob=new Blob([JSON.stringify(lastRecord,null,2)],{type:"application/json"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="340b-screening-demo.json";a.click();URL.revokeObjectURL(a.href);
+}
+evaluateCase();
+</script>
+</body>
+</html>
